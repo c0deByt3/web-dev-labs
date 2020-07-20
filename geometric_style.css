@@ -40,3 +40,13 @@ body {
     right: 0;
     background-color: yellow;
 }
+
+#info_half {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    align-self: flex-end;
+    margin-bottom: 150px;
+}
