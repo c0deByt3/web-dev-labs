@@ -35,17 +35,17 @@ body {
     background-color: whitesmoke;
 }
 
-.design_left_bottom {
+/* .design_left_bottom {
     position: relative;
     height: 50%;
     width: 50%;
     background-color: yellow;
     display: flex;
-}
+} */
 
 .circle {
-    height: 50%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
     border-radius: 50%;
     background-color: turquoise;
     align-self: center;
