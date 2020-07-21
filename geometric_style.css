@@ -9,7 +9,6 @@ body {
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    /* padding-top: 20px; */
 }
 
 .left {
@@ -29,12 +28,28 @@ body {
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    /* padding-top: 20px; */
 }
 
-.design_left {
+.design_left_top {
     height: 50%;
     background-color: whitesmoke;
+}
+
+.design_left_bottom {
+    position: relative;
+    height: 50%;
+    width: 50%;
+    background-color: yellow;
+    display: flex;
+}
+
+.circle {
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+    background-color: turquoise;
+    align-self: center;
+    margin: auto;
 }
 
 .top_square {
@@ -53,6 +68,7 @@ body {
 .design_right {
     right: 0;
     background-color: yellow;
+    background-image: linear-gradient(to top left, #e394a3 50%, #8dd6a6 50%);
 }
 
 #info_half {
