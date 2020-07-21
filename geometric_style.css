@@ -9,7 +9,7 @@ body {
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 .left {
@@ -29,11 +29,25 @@ body {
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    padding-top: 20px;
+    /* padding-top: 20px; */
 }
 
 .design_left {
-    background-color: blue;
+    height: 50%;
+    background-color: whitesmoke;
+}
+
+.top_square {
+    height: 50%;
+    width: 50%;
+    background-color: grey;
+}
+
+.bottom_square {
+    height: 50%;
+    width: 50%;
+    background-color: gainsboro;
+    float: right;
 }
 
 .design_right {
