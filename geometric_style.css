@@ -2,6 +2,44 @@ body {
     margin: 0;
 }
 
+.menu {
+    width: 15%;
+    height: 100%;
+    background-color: yellow;
+}
+
+.hamburger {
+    margin-top:50px;
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 13px;
+    margin-right: 5px;
+    margin-left:50px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.hamburger:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    width: 100%;
+    border-top: 3px solid orange;
+}
+
+#info_half {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+h1 {
+    align-self: flex-end;
+    margin-bottom: 150px;
+}
+
 .split {
     height: 100%;
     width: 50%;
@@ -12,6 +50,7 @@ body {
 }
 
 .left {
+    display: flex;
     left: 0;
     background-color: whitesmoke;
 }
@@ -33,6 +72,9 @@ body {
 .design_left_top {
     height: 50%;
     background-color: whitesmoke;
+    z-index: 2;
+    box-shadow: -2px 10px 10px -10px black;
+    overflow: visible;
 }
 
 /* .design_left_bottom {
@@ -48,35 +90,36 @@ body {
     width: 100%;
     border-radius: 50%;
     background-color: turquoise;
+    background-image: url('images/45-degree-fabric-dark.png');
+    box-shadow: inset 0px 0px 10px black;
     align-self: center;
     margin: auto;
 }
 
 .top_square {
+    position: relative;
+    left: -5px;
+    bottom: -5px;
     height: 50%;
     width: 50%;
-    background-color: grey;
+    background-color: orange;
+    box-shadow: 0px 0px 10px black;
 }
 
 .bottom_square {
+    position: relative;
+    right: -5px;
+    bottom: -5px;
     height: 50%;
     width: 50%;
     background-color: gainsboro;
     float: right;
+    box-shadow: 0px 0px 10px black;
 }
 
 .design_right {
     right: 0;
-    background-color: yellow;
     background-image: linear-gradient(to top left, #e394a3 50%, #8dd6a6 50%);
+    box-shadow: 0px 0 10px black;
 }
 
-#info_half {
-    display: flex;
-    justify-content: center;
-}
-
-h1 {
-    align-self: flex-end;
-    margin-bottom: 150px;
-}
