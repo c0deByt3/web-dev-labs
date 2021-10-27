@@ -1,0 +1,8 @@
+Getting started with the Web:
+-----------------------------
+
+- An automation system, like Webpack, Grunt, or Gulp to automatically perform repetitive tasks, such as minifying code and running tests (is this needed?)
+- Live server through Visual Studio goes through HTTP. Python & XAMPP can also be used to simulate remote requests / servers.
+
+continue from: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web | bottom of page 
+
