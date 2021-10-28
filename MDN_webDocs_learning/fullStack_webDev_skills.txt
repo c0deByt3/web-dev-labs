@@ -11,4 +11,8 @@ JavaScript Full Stack Web Developer areas of focus:
 9.	MERN Stack
 10.	Security best practices
 11.	Hosting Management
+12. SVG images & Image Software
+13. Design fundamentals
+14. Application performance
+15. Functionality & planning
 
