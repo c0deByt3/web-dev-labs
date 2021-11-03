@@ -1,4 +1,4 @@
-/* World Bits War
+/* World Bits War - WORKING!!!
 - iterate through array and change num.toString(2);
 - number of 1s in binary are the value of that num;
 - if num is negative, the value of that binary total is negative;
@@ -6,13 +6,21 @@
 */
 
 function bitsWar(numbers) {
-    let oddArr = numbers.filter(function(o) {return o % 2 != 0});
-    let evenArr = numbers.filter(function(e) {return e % 2 == 0});
-    console.log(oddArr, evenArr)
-    console.log(numbers.map(function(a) {return a.toString(2).match(/[1]/g).length}));
-    console.log(numbers.map(function(a) {return Number(a.toString(2))}));
-    console.log(oddArr.reduce(function(sum, num) {return num < 0 ? sum -= num.toString(2).match(/[1]/g).length 
-                        : sum += num.toString(2).match(/[1]/g).length}));
+    let [oddTotal, evenTotal] = [0, 0];
+                
+    for (let i of numbers) {
+        if (i == 0) {
+            continue;
+        } else {
+            i % 2 != 0 && i > 0 ? oddTotal += i.toString(2).match(/[1]/g).length :
+            i % 2 != 0 && i < 0 ? oddTotal -= i.toString(2).match(/[1]/g).length :
+            i % 2 == 0 && i > 0 ? evenTotal += i.toString(2).match(/[1]/g).length:
+                                            evenTotal -= i.toString(2).match(/[1]/g).length;
+         }
+    }
+
+    return evenTotal == oddTotal ? 'tie' : evenTotal > oddTotal ? 'evens win' : 'odds win';
+    
 };
 
-console.log(bitsWar([7,-3,20])); /*  odds win */
+console.log(bitsWar([-18,6,20,0])); /*  evens win */

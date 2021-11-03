@@ -13,4 +13,13 @@
 - What does your website look like, in simple high-level terms? What's the background color? What kind of font is appropriate: formal, cartoony, bold and loud, subtle?
     Font will be Sans Serif for a clean look and the site will have a clean simple look with subdued colours.
 
-    theme colour: 
+Styles 
+-----
+
+    theme colour: #EEECEC
+
+    Google font:    <link rel="preconnect" href="https://fonts.googleapis.com">
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+                CSS:    font-family: 'Open Sans', sans-serif;

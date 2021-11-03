@@ -15,4 +15,5 @@ JavaScript Full Stack Web Developer areas of focus:
 13. Design fundamentals
 14. Application performance
 15. Functionality & planning
+16. API usage
 
