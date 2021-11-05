@@ -15,6 +15,12 @@
 - What does your website look like, in simple high-level terms? What's the background color? What kind of font is appropriate: formal, cartoony, bold and loud, subtle?
     Font will be Sans Serif for a clean look and the site will have a clean simple look with subdued colours.
 
+End purpose
+----------
+
+- Create a reference site for myself to go to Web_dev resources I have in my bookmarks
+- Some quick key points, like a snapshot of things I deem to be of value
+
 Styles 
 -----
 
