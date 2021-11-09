@@ -14,5 +14,5 @@ What will you website look like?
 
 Examples of more detailed planning for a bigger site: https://design.firefox.com/photon/
 
-continue from: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics
+continue from: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics
 
