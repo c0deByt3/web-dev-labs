@@ -29,7 +29,7 @@ h2 {
     padding-bottom: 20px;
 }
 
-#image {
+.image {
     height:300px;
     justify-self: end;
 }
