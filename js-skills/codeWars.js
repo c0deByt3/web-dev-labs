@@ -5,22 +5,39 @@
 - total up value of ngative numbers and compare to value of postiive numbers;
 */
 
-function bitsWar(numbers) {
-    let [oddTotal, evenTotal] = [0, 0];
+// function bitsWar(numbers) {
+//     let [oddTotal, evenTotal] = [0, 0];
                 
-    for (let i of numbers) {
-        if (i == 0) {
-            continue;
-        } else {
-            i % 2 != 0 && i > 0 ? oddTotal += i.toString(2).match(/[1]/g).length :
-            i % 2 != 0 && i < 0 ? oddTotal -= i.toString(2).match(/[1]/g).length :
-            i % 2 == 0 && i > 0 ? evenTotal += i.toString(2).match(/[1]/g).length:
-                                            evenTotal -= i.toString(2).match(/[1]/g).length;
-         }
-    }
+//     for (let i of numbers) {
+//         if (i == 0) {
+//             continue;
+//         } else {
+//             i % 2 != 0 && i > 0 ? oddTotal += i.toString(2).match(/[1]/g).length :
+//             i % 2 != 0 && i < 0 ? oddTotal -= i.toString(2).match(/[1]/g).length :
+//             i % 2 == 0 && i > 0 ? evenTotal += i.toString(2).match(/[1]/g).length:
+//                                             evenTotal -= i.toString(2).match(/[1]/g).length;
+//          }
+//     }
 
-    return evenTotal == oddTotal ? 'tie' : evenTotal > oddTotal ? 'evens win' : 'odds win';
+//     return evenTotal == oddTotal ? 'tie' : evenTotal > oddTotal ? 'evens win' : 'odds win';
     
+// };
+
+// console.log(bitsWar([-18,6,20,0])); /*  evens win */
+
+// -----------------------------------------------------
+
+/* Handshake problem - Working!!
+- determine minimum amount of people to achieve target handshakes
+- Incoroporated math formula for unique pairs
+*/
+
+let getParticipants = handshakes => {
+    let people = 1;
+    while (people * (people - 1) / 2 < handshakes) {
+        people ++;
+    }
+    return people
 };
 
-console.log(bitsWar([-18,6,20,0])); /*  evens win */
+console.log(getParticipants(6));
