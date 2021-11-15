@@ -33,3 +33,12 @@ h2 {
     height:300px;
     justify-self: end;
 }
+
+.resources {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    display: block;
+}

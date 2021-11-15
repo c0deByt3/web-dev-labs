@@ -17,4 +17,5 @@ JavaScript Full Stack Web Developer areas of focus:
 15. Functionality & planning
 16. API usage
 17. DOM functionality & methods
+18. FTP
 

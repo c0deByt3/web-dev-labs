@@ -21,7 +21,7 @@ htmlImg.addEventListener('mouseover', function() {
 
 myButton.onclick = function setUserName() {
     let myName = prompt('Please Enter Your Name');
-    localStorage.setItem('name', 'myName');
+    localStorage.setItem('name', myName);
     subHeading.textContent = 'Web Develpoment technologies, references & resources' + ' for ' + myName;
 };
 

@@ -1,0 +1,21 @@
+body {
+    background-color: #182d4e;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    color: beige;
+    text-align: center;
+    font-size: 60px;
+}
+
+#mainHeading {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+}
