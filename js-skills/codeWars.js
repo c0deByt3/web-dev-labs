@@ -32,12 +32,42 @@
 - Incoroporated math formula for unique pairs
 */
 
-let getParticipants = handshakes => {
-    let people = 1;
-    while (people * (people - 1) / 2 < handshakes) {
-        people ++;
+// let getParticipants = handshakes => {
+//     let people = 1;
+//     while (people * (people - 1) / 2 < handshakes) {
+//         people ++;
+//     }
+//     return people
+// };
+
+// console.log(getParticipants(6));
+
+// -------------------------------------------------------
+
+/* Repeated Substring - WORKING!!!
+var count = str.length / 2 (biggest starting point)
+var subStr = 2 (lowest substring starting point)
+
+while count > 1 {check if str.substring(0, subStr).repeat(count) == str }
+if so, return [str.subStr(0, count), count]
+else return [str, 1]
+*/
+
+function f(s) {
+    let subStr = 1;
+ 
+    while (subStr <= s.length) {
+        let count = s.length / subStr;
+        if (s.substring(0, subStr).repeat(count) == s) {
+            return [s.substring(0, subStr), count];
+        } else {
+            subStr++;
+        }                                  
     }
-    return people
+
+    return [s, 1];
 };
 
-console.log(getParticipants(6));
+console.log(f("abcabc"));
+
+// f('aaaaa') not working. Should return ['a', 5]
