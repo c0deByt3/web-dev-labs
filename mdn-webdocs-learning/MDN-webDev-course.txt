@@ -14,5 +14,5 @@ What will you website look like?
 
 Examples of more detailed planning for a bigger site: https://design.firefox.com/photon/
 
-continue from: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML
+continue from: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals
 
