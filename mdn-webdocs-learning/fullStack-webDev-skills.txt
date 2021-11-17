@@ -8,7 +8,7 @@ JavaScript Full Stack Web Developer areas of focus:
 6.	Node.js
 7.	SQL
 8.	NoSQL
-9.	MERN Stack
+9.	MERN Stack & JamStack
 10.	Security best practices
 11.	Hosting Management
 12. SVG images & Image Software
