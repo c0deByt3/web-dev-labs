@@ -1,2 +1,0 @@
-Have h1 heading sitting next to menu button (horizontal orientation)
-When menu button is pressed it expands with info horizontal and vertical which pushes heading down to bottom of screen.
