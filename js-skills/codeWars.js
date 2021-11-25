@@ -53,21 +53,56 @@ if so, return [str.subStr(0, count), count]
 else return [str, 1]
 */
 
-function f(s) {
-    let subStr = 1;
+// function f(s) {
+//     let subStr = 1;
  
-    while (subStr <= s.length) {
-        let count = s.length / subStr;
-        if (s.substring(0, subStr).repeat(count) == s) {
-            return [s.substring(0, subStr), count];
-        } else {
-            subStr++;
-        }                                  
-    }
+//     while (subStr <= s.length) {
+//         let count = s.length / subStr;
+//         if (s.substring(0, subStr).repeat(count) == s) {
+//             return [s.substring(0, subStr), count];
+//         } else {
+//             subStr++;
+//         }                                  
+//     }
 
-    return [s, 1];
-};
+//     return [s, 1];
+// };
 
-console.log(f("abcabc"));
+// console.log(f("abcabc"));
 
 // f('aaaaa') not working. Should return ['a', 5]
+
+// -------------------------------------------------------------
+
+/* Statistics for an Athletic Association
+- if empty string, return empty string, else:
+- input.split(','), 
+- iterate through array, substring.split('|') and convert each substring into seconds. val at [0] hours * 3600 etc.
+- push total seconds for substring to new array for verification, arrange in ascending order
+- range = highest - lowest value. Return as converted string h|m|s
+- mean = newValArr.map(total / inputArr.length)
+- median = middle number if odd, else average of middle two numbers 
+*/
+
+function stat(strg) {
+    if (strg) {
+        let ogArr = strg.split(',').map(function(a) {return a.split('|')});
+        let secArr = Array();
+        for (let i in ogArr) {
+            let secVal = 0;
+            for (let j in ogArr[i]) {
+                j == 0 ? secVal += ogArr[i][j] * 3600 : j == 1 ? secVal += ogArr[i][j] * 60 : secVal += Number(ogArr[i][j]);    
+            } secArr.push(secVal);
+        } 
+        secArr.sort(function(b, c) {return b - c})
+        let totalTime = secArr.reduce(function (sum, num) {return sum += num});
+        let range = secArr[secArr.length - 1] - secArr[0];
+        console.log(Math.floor(totalTime / secArr.length));
+    }
+
+    return "";
+};
+
+console.log(stat("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17")); 
+
+/* => Range: 01|01|18 Average: 01|38|05 Median: 01|32|34" */
