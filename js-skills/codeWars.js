@@ -94,11 +94,17 @@ function stat(strg) {
                 j == 0 ? secVal += ogArr[i][j] * 3600 : j == 1 ? secVal += ogArr[i][j] * 60 : secVal += Number(ogArr[i][j]);    
             } secArr.push(secVal);
         } 
-        secArr.sort(function(b, c) {return b - c})
-        let totalTime = secArr.reduce(function (sum, num) {return sum += num});
+        secArr.sort(function(b, c) {return b - c});
         let range = secArr[secArr.length - 1] - secArr[0];
-        console.log(Math.floor(totalTime / secArr.length));
-    }
+        let average = secArr.reduce(function (sum, num) {return sum += num}) / secArr.length;
+        let median = secArr.length % 2 == 0 ? (secArr[(secArr.length / 2) - 1] + secArr[secArr.length / 2]) / 2 :
+                                    secArr[Math.floor(secArr.length / 2)];
+
+        function strTime(stat) {
+            return stat == range ? `${String(Math.floor(range / 3600)).padStart(2, '0')}|` : 0;
+        }
+        return `Range: ${strTime(range)} Average: Median:`
+    };
 
     return "";
 };
