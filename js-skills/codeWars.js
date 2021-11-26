@@ -74,7 +74,7 @@ else return [str, 1]
 
 // -------------------------------------------------------------
 
-/* Statistics for an Athletic Association
+/* Statistics for an Athletic Association - WORKING!!!
 - if empty string, return empty string, else:
 - input.split(','), 
 - iterate through array, substring.split('|') and convert each substring into seconds. val at [0] hours * 3600 etc.
@@ -94,16 +94,21 @@ function stat(strg) {
                 j == 0 ? secVal += ogArr[i][j] * 3600 : j == 1 ? secVal += ogArr[i][j] * 60 : secVal += Number(ogArr[i][j]);    
             } secArr.push(secVal);
         } 
+
         secArr.sort(function(b, c) {return b - c});
         let range = secArr[secArr.length - 1] - secArr[0];
         let average = secArr.reduce(function (sum, num) {return sum += num}) / secArr.length;
         let median = secArr.length % 2 == 0 ? (secArr[(secArr.length / 2) - 1] + secArr[secArr.length / 2]) / 2 :
-                                    secArr[Math.floor(secArr.length / 2)];
+                                            secArr[Math.floor(secArr.length / 2)];
 
         function strTime(stat) {
-            return stat == range ? `${String(Math.floor(range / 3600)).padStart(2, '0')}|` : 0;
+            let h = String(Math.floor(stat / 3600)).padStart(2, '0');
+            let m = String(Math.floor((stat - (h * 3600)) / 60)).padStart(2, '0');
+            let s = String(Math.floor(stat - (h * 3600) - (m * 60))).padStart(2, '0');
+            return `${h}|${m}|${s}`;
         }
-        return `Range: ${strTime(range)} Average: Median:`
+
+        return `Range: ${strTime(range)} Average: ${strTime(average)} Median: ${strTime(median)}`;
     };
 
     return "";
