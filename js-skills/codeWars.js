@@ -84,36 +84,66 @@ else return [str, 1]
 - median = middle number if odd, else average of middle two numbers 
 */
 
-function stat(strg) {
-    if (strg) {
-        let ogArr = strg.split(',').map(function(a) {return a.split('|')});
-        let secArr = Array();
-        for (let i in ogArr) {
-            let secVal = 0;
-            for (let j in ogArr[i]) {
-                j == 0 ? secVal += ogArr[i][j] * 3600 : j == 1 ? secVal += ogArr[i][j] * 60 : secVal += Number(ogArr[i][j]);    
-            } secArr.push(secVal);
-        } 
+// function stat(strg) {
+//     if (strg) {
+//         let ogArr = strg.split(',').map(function(a) {return a.split('|')});
+//         let secArr = Array();
+//         for (let i in ogArr) {
+//             let secVal = 0;
+//             for (let j in ogArr[i]) {
+//                 j == 0 ? secVal += ogArr[i][j] * 3600 : j == 1 ? secVal += ogArr[i][j] * 60 : secVal += Number(ogArr[i][j]);    
+//             } secArr.push(secVal);
+//         } 
 
-        secArr.sort(function(b, c) {return b - c});
-        let range = secArr[secArr.length - 1] - secArr[0];
-        let average = secArr.reduce(function (sum, num) {return sum += num}) / secArr.length;
-        let median = secArr.length % 2 == 0 ? (secArr[(secArr.length / 2) - 1] + secArr[secArr.length / 2]) / 2 :
-                                            secArr[Math.floor(secArr.length / 2)];
+//         secArr.sort(function(b, c) {return b - c});
+//         let range = secArr[secArr.length - 1] - secArr[0];
+//         let average = secArr.reduce(function (sum, num) {return sum += num}) / secArr.length;
+//         let median = secArr.length % 2 == 0 ? (secArr[(secArr.length / 2) - 1] + secArr[secArr.length / 2]) / 2 :
+//                                             secArr[Math.floor(secArr.length / 2)];
 
-        function strTime(stat) {
-            let h = String(Math.floor(stat / 3600)).padStart(2, '0');
-            let m = String(Math.floor((stat - (h * 3600)) / 60)).padStart(2, '0');
-            let s = String(Math.floor(stat - (h * 3600) - (m * 60))).padStart(2, '0');
-            return `${h}|${m}|${s}`;
-        }
+//         function strTime(stat) {
+//             let h = String(Math.floor(stat / 3600)).padStart(2, '0');
+//             let m = String(Math.floor((stat - (h * 3600)) / 60)).padStart(2, '0');
+//             let s = String(Math.floor(stat - (h * 3600) - (m * 60))).padStart(2, '0');
+//             return `${h}|${m}|${s}`;
+//         }
 
-        return `Range: ${strTime(range)} Average: ${strTime(average)} Median: ${strTime(median)}`;
-    };
+//         return `Range: ${strTime(range)} Average: ${strTime(average)} Median: ${strTime(median)}`;
+//     };
 
-    return "";
-};
+//     return "";
+// };
 
-console.log(stat("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17")); 
+// console.log(stat("01|15|59, 1|47|16, 01|17|20, 1|32|34, 2|17|17")); 
 
 /* => Range: 01|01|18 Average: 01|38|05 Median: 01|32|34" */
+
+// ---------------------------------------------------------------------
+
+/* Regex Series: Generate a Password Validator - WORKING but tests are showing different online
+- function generateRegex() takes 2 arguments, class  with lengths & overall min length of password
+- build regex checker from inputs with {length} checked
+*/
+
+const charClasses = [['[a-z]', 4], ['[0-9]', 4]];
+const minLength = 17;
+const yourRegex = generateRegex(charClasses, minLength);
+
+function generateRegex(charClasses, minLength) {
+    let lengthChk = charClasses.map(function(a) {return Number(a[1])}).reduce(function(sum, num) {return sum += num})  == minLength;
+    if (lengthChk) {
+        let charStrg = '';
+        for (let i in charClasses) {
+            charStrg += `${charClasses[i][0]}` + `{${charClasses[i][1]}}`;
+            lengthChk += charClasses[i][1];   
+        } 
+
+        let regexBuilder = new RegExp(charStrg, 'g');
+        return regexBuilder;
+    } 
+
+    let regexBuilder = new RegExp(`.{${minLength}}`, 'g');
+    return regexBuilder;
+};
+
+console.log(yourRegex.test("abcd123411"));
