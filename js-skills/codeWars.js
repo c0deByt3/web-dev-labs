@@ -125,25 +125,53 @@ else return [str, 1]
 - build regex checker from inputs with {length} checked
 */
 
-const charClasses = [['[a-z]', 4], ['[0-9]', 4]];
-const minLength = 17;
-const yourRegex = generateRegex(charClasses, minLength);
+// const charClasses = [['[a-z]', 4], ['[0-9]', 4]];
+// const minLength = 17;
+// const yourRegex = generateRegex(charClasses, minLength);
 
-function generateRegex(charClasses, minLength) {
-    let lengthChk = charClasses.map(function(a) {return Number(a[1])}).reduce(function(sum, num) {return sum += num})  == minLength;
-    if (lengthChk) {
-        let charStrg = '';
-        for (let i in charClasses) {
-            charStrg += `${charClasses[i][0]}` + `{${charClasses[i][1]}}`;
-            lengthChk += charClasses[i][1];   
-        } 
+// function generateRegex(charClasses, minLength) {
+//     let lengthChk = charClasses.map(function(a) {return Number(a[1])}).reduce(function(sum, num) {return sum += num})  == minLength;
+//     if (lengthChk) {
+//         let charStrg = '';
+//         for (let i in charClasses) {
+//             charStrg += `${charClasses[i][0]}` + `{${charClasses[i][1]}}`;
+//             lengthChk += charClasses[i][1];   
+//         } 
 
-        let regexBuilder = new RegExp(charStrg, 'g');
-        return regexBuilder;
-    } 
+//         let regexBuilder = new RegExp(charStrg, 'g');
+//         return regexBuilder;
+//     } 
 
-    let regexBuilder = new RegExp(`.{${minLength}}`, 'g');
-    return regexBuilder;
+//     let regexBuilder = new RegExp(`.{${minLength}}`, 'g');
+//     return regexBuilder;
+// };
+
+// console.log(yourRegex.test("abcd123411"));
+
+// ------------------------------------------------------------------------
+
+/* Ranking NBA teams
+- return team stats from input string -> "Los Angeles Clippers:W=1;D=0;L=1;Scored=204;Conceded=208;Points=3"
+- if input string '' return ''
+- if team not present in string -> "Team Name:This team didn't play!"
+- if input string contains float -> "Error(float number):New York Knicks 101.12 Atlanta Hawks 112"
+- check all fail conditions first else create tem object from string with all relevant stats
+- return stats in string format above
+*/
+
+let r1 = 'Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112, Los Angeles Clippers 100 Boston Celtics 120';
+
+function nbaCup(resultSheet, toFind) {
+    let teamGames = resultSheet.split(',').filter(function(a) {return a.includes(toFind)});
+    console.log(teamGames);
+    for (let i of teamGames) {
+        console.log(i.match(/\d+/g));
+    };
+    let teamFilter = new RegExp(`${toFind}\\d{0,3}`, `g`);
+    console.log(teamFilter)
+    console.log(r1.match(teamFilter));
+    console.log(resultSheet.split(',').filter(function(a) {return a.includes(toFind)}));
+    
 };
 
-console.log(yourRegex.test("abcd123411"));
+console.log(nbaCup(r1, 'Los Angeles Clippers '));
