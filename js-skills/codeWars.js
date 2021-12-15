@@ -162,16 +162,23 @@ else return [str, 1]
 let r1 = 'Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112, Los Angeles Clippers 100 Boston Celtics 120';
 
 function nbaCup(resultSheet, toFind) {
-    let teamGames = resultSheet.split(',').filter(function(a) {return a.includes(toFind)});
+    let teamGames = resultSheet.split(',').filter(function(a) {return a.includes(toFind)}).map(function(c) {return c.split(/(?<=\d)\s/g)});
     console.log(teamGames);
+    let teamStats = {team: `${toFind}`};
     for (let i of teamGames) {
-        console.log(i.match(/\d+/g));
-    };
-    let teamFilter = new RegExp(`${toFind}\\d{0,3}`, `g`);
-    console.log(teamFilter)
-    console.log(r1.match(teamFilter));
-    console.log(resultSheet.split(',').filter(function(a) {return a.includes(toFind)}));
-    
+        // teamStats.team = toFind;
+        console.log(i);
+        // Verify score belongs to appropriate team
+        console.log(Number(i[0].match(/\d+/g)) > Number(i[1].match(/\d+/g)));
+        // i.includes(toFind) ? console.log('yes') : console.log('no');
+        for (let j of i) {
+            let scored = 0;
+            let conceded = 0;
+            console.log(j.includes(toFind));
+        }
+    }
+
+    console.log(teamStats);
 };
 
-console.log(nbaCup(r1, 'Los Angeles Clippers '));
+console.log(nbaCup(r1, 'Los Angeles Clippers')); /* "Los Angeles Clippers:W=1;D=0;L=1;Scored=204;Conceded=208;Points=3" */
