@@ -159,38 +159,76 @@ else return [str, 1]
 - return stats in string format above
 */
 
-let r1 = 'Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 106,Boston Celtics 112 Philadelphia 76ers 95,Brooklyn Nets 100 Chicago Bulls 115,Detroit Pistons 92 Utah Jazz 87,Miami Heat 104 Charlotte Hornets 94,Toronto Raptors 106 Indiana Pacers 99,Orlando Magic 87 Washington Wizards 88,Golden State Warriors 111 New Orleans Pelicans 95,Atlanta Hawks 94 Detroit Pistons 106,Chicago Bulls 97 Cleveland Cavaliers 95,San Antonio Spurs 111 Houston Rockets 86,Chicago Bulls 103 Dallas Mavericks 102,Minnesota Timberwolves 112 Milwaukee Bucks 108,New Orleans Pelicans 93 Miami Heat 90,Boston Celtics 81 Philadelphia 76ers 65,Detroit Pistons 115 Atlanta Hawks 87,Toronto Raptors 92 Washington Wizards 82,Orlando Magic 86 Memphis Grizzlies 76,Los Angeles Clippers 115 Portland Trail Blazers 109,Los Angeles Lakers 97 Golden State Warriors 136,Utah Jazz 98 Denver Nuggets 78,Boston Celtics 99 New York Knicks 85,Indiana Pacers 98 Charlotte Hornets 86,Dallas Mavericks 87 Phoenix Suns 99,Atlanta Hawks 81 Memphis Grizzlies 82,Miami Heat 110 Washington Wizards 105,Detroit Pistons 94 Charlotte Hornets 99,Orlando Magic 110 New Orleans Pelicans 107,Los Angeles Clippers 130 Golden State Warriors 95,Utah Jazz 102 Oklahoma City Thunder 113,San Antonio Spurs 84 Phoenix Suns 104,Chicago Bulls 103 Indiana Pacers 94,Milwaukee Bucks 106 Minnesota Timberwolves 88,Los Angeles Lakers 104 Portland Trail Blazers 102,Houston Rockets 120 New Orleans Pelicans 100,Boston Celtics 111 Brooklyn Nets 105,Charlotte Hornets 94 Chicago Bulls 86,Cleveland Cavaliers 103 Dallas Mavericks 97';
+// let r1 = 'Los Angeles Clippers 104 Dallas Mavericks 88,New York Knicks 101 Atlanta Hawks 112,Indiana Pacers 103 Memphis Grizzlies 112,Los Angeles Lakers 111 Minnesota Timberwolves 112,Phoenix Suns 95 Dallas Mavericks 111,Portland Trail Blazers 112 New Orleans Pelicans 94,Sacramento Kings 104 Los Angeles Clippers 111,Houston Rockets 85 Denver Nuggets 105,Memphis Grizzlies 76 Cleveland Cavaliers 106,Milwaukee Bucks 97 New York Knicks 122,Oklahoma City Thunder 112 San Antonio Spurs 106,Boston Celtics 112 Philadelphia 76ers 95,Brooklyn Nets 100 Chicago Bulls 115,Detroit Pistons 92 Utah Jazz 87,Miami Heat 104 Charlotte Hornets 94,Toronto Raptors 106 Indiana Pacers 99,Orlando Magic 87 Washington Wizards 88,Golden State Warriors 111 New Orleans Pelicans 95,Atlanta Hawks 94 Detroit Pistons 106,Chicago Bulls 97 Cleveland Cavaliers 95,San Antonio Spurs 111 Houston Rockets 86,Chicago Bulls 103 Dallas Mavericks 102,Minnesota Timberwolves 112 Milwaukee Bucks 108,New Orleans Pelicans 93 Miami Heat 90,Boston Celtics 81 Philadelphia 76ers 65,Detroit Pistons 115 Atlanta Hawks 87,Toronto Raptors 92 Washington Wizards 82,Orlando Magic 86 Memphis Grizzlies 76,Los Angeles Clippers 115 Portland Trail Blazers 109,Los Angeles Lakers 97 Golden State Warriors 136,Utah Jazz 98 Denver Nuggets 78,Boston Celtics 99 New York Knicks 85,Indiana Pacers 98 Charlotte Hornets 86,Dallas Mavericks 87 Phoenix Suns 99,Atlanta Hawks 81 Memphis Grizzlies 82,Miami Heat 110 Washington Wizards 105,Detroit Pistons 94 Charlotte Hornets 99,Orlando Magic 110 New Orleans Pelicans 107,Los Angeles Clippers 130 Golden State Warriors 95,Utah Jazz 102 Oklahoma City Thunder 113,San Antonio Spurs 84 Phoenix Suns 104,Chicago Bulls 103 Indiana Pacers 94,Milwaukee Bucks 106 Minnesota Timberwolves 88,Los Angeles Lakers 104 Portland Trail Blazers 102,Houston Rockets 120 New Orleans Pelicans 100,Boston Celtics 111 Brooklyn Nets 105,Charlotte Hornets 94 Chicago Bulls 86,Cleveland Cavaliers 103 Dallas Mavericks 97';
 
-function nbaCup(resultSheet, toFind) {
-    if (resultSheet.includes(`${toFind} `) && toFind != '') {
-        let games = resultSheet.split(',').filter(function(a) {return a.includes(toFind)}).map(function(c) {return c.split(/(?<=\d)\s/g)});
-        let stats = {team: `${toFind}`, wins: 0, draw: 0, loss: 0, totScore: 0, totConcede: 0, points:0};
+// function nbaCup(resultSheet, toFind) {
+//     if (resultSheet.includes(`${toFind} `) && toFind != '') {
+//         let games = resultSheet.split(',').filter(function(a) {return a.includes(toFind)}).map(function(c) {return c.split(/(?<=\d)\s/g)});
+//         let stats = {team: `${toFind}`, wins: 0, draw: 0, loss: 0, totScore: 0, totConcede: 0, points:0};
       
-        for (let i of games) {
-            if (i.join().match(/\d+[.]\d+/g) != null) {
-                return `Error(float number):${i.join(' ')}`;
-            };
+//         for (let i of games) {
+//             if (i.join().match(/\d+[.]\d+/g) != null) {
+//                 return `Error(float number):${i.join(' ')}`;
+//             };
 
-            let scored = 0;
-            let conceded = 0;
+//             let scored = 0;
+//             let conceded = 0;
             
-            for (let j of i) {
-                    j.includes(toFind) ? scored += Number(j.match(/\d+$/g)) : conceded += Number(j.match(/\d+$/g));
-            } 
+//             for (let j of i) {
+//                     j.includes(toFind) ? scored += Number(j.match(/\d+$/g)) : conceded += Number(j.match(/\d+$/g));
+//             } 
 
-            scored > conceded ? stats.wins++ : scored < conceded ? stats.loss++ : stats.draw++;
-            stats.totScore += scored;
-            stats.totConcede += conceded;
-        }
+//             scored > conceded ? stats.wins++ : scored < conceded ? stats.loss++ : stats.draw++;
+//             stats.totScore += scored;
+//             stats.totConcede += conceded;
+//         }
     
-        stats.points += stats.wins * 3
-        stats.points += stats.draw * 1;
-        return `${toFind}:W=${stats.wins};D=${stats.draw};L=${stats.loss};Scored=${stats.totScore};Conceded=${stats.totConcede};Points=${stats.points}`;
-    }
+//         stats.points += stats.wins * 3
+//         stats.points += stats.draw * 1;
+//         return `${toFind}:W=${stats.wins};D=${stats.draw};L=${stats.loss};Scored=${stats.totScore};Conceded=${stats.totConcede};Points=${stats.points}`;
+//     }
 
-    return toFind == '' ? '' : `${toFind}:This team didn't play!`;
-};
+//     return toFind == '' ? '' : `${toFind}:This team didn't play!`;
+// };
 
-console.log(nbaCup(r1, 'Dallas Mavericks'));
+// console.log(nbaCup(r1, 'Dallas Mavericks'));
 
 // expected 'Boston Celtics:W=2;D=2;L=0;Scored=403;Conceded=NaN;Points=8' to equal 'Boston Celtics:W=4;D=0;L=0;Scored=403;Conceded=350;Points=12'
+
+// ---------------------------------------------------------------------
+
+/* Pick peaks
+- peak is considered a value that is higher than surrounding numbers (before & after)
+- first and last number are not considered peaks
+- start index at pos 1, while pos is leass than array.length check if val[i] is greater than val[i-1] && val[i+1]
+- if val[i] == val[i+1] and ends with a lower num count as a plateu
+- return object {pos:[], peaks:[]}
+*/
+
+function pickPeaks(arr) {
+    let pos = 1;
+    let results = {pos:[], peaks:[]};
+
+    while (pos < arr.length - 1) {
+        let [preVal, val, nextVal] = [arr[pos-1], arr[pos], arr[pos+1]];
+
+        if (preVal < val && val > nextVal) {
+            results.pos.push(pos);
+            results.peaks.push(arr[pos]);
+        } else if (preVal < val && val == nextVal) {
+            let plateauLen = arr.slice(pos);
+            let plateauFilter = new RegExp(`${val}+`);
+            let plateauCheck = plateauLen.slice(0, plateauLen.join('').match(plateauFilter).join('').length + 1);
+            
+            if (plateauCheck[plateauCheck.length - 1] < plateauCheck[plateauCheck.length - 2]) {
+                results.pos.push(pos);
+                results.peaks.push(val);
+            }
+            pos += plateauLen.join('').match(plateauFilter).join('').length - 1;
+        } 
+        pos++;
+    }
+    return results;
+};
+
+console.log(pickPeaks([1,2,2,2,1,4,1,2,3,2,1])); /* [1,2,3,6,4,1,2,3,2,1] {pos:[3,7], peaks:[6,3]} */
