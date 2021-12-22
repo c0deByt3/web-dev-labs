@@ -1,1 +1,1 @@
-window.onload = () => alert('js script is linked');
+// window.onload = () => alert('js script is linked');
