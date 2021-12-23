@@ -197,7 +197,7 @@ else return [str, 1]
 
 // ---------------------------------------------------------------------
 
-/* Pick peaks
+/* Pick peaks - NOT WORKING 
 - peak is considered a value that is higher than surrounding numbers (before & after)
 - first and last number are not considered peaks
 - start index at pos 1, while pos is leass than array.length check if val[i] is greater than val[i-1] && val[i+1]
@@ -205,30 +205,65 @@ else return [str, 1]
 - return object {pos:[], peaks:[]}
 */
 
-function pickPeaks(arr) {
-    let pos = 1;
-    let results = {pos:[], peaks:[]};
+// function pickPeaks(arr) {
+//     let pos = 1;
+//     let results = {pos:[], peaks:[]};
 
-    while (pos < arr.length - 1) {
-        let [preVal, val, nextVal] = [arr[pos-1], arr[pos], arr[pos+1]];
+//     while (pos < arr.length - 1) {
+//         let [preVal, val, nextVal] = [arr[pos-1], arr[pos], arr[pos+1]];
 
-        if (preVal < val && val > nextVal) {
-            results.pos.push(pos);
-            results.peaks.push(arr[pos]);
-        } else if (preVal < val && val == nextVal) {
-            let plateauLen = arr.slice(pos);
-            let plateauFilter = new RegExp(`${val}+`);
-            let plateauCheck = plateauLen.slice(0, plateauLen.join('').match(plateauFilter).join('').length + 1);
+//         if (preVal < val && val > nextVal) {
+//             results.pos.push(pos);
+//             results.peaks.push(arr[pos]);
+//         } else if (preVal < val && val == nextVal) {
+//             let plateauLen = arr.slice(pos);
+//             let plateauFilter = new RegExp(`${val}+`);
+//             let plateauCheck = plateauLen.slice(0, plateauLen.join('').match(plateauFilter).join('').length + 1);
             
-            if (plateauCheck[plateauCheck.length - 1] < plateauCheck[plateauCheck.length - 2]) {
-                results.pos.push(pos);
-                results.peaks.push(val);
-            }
-            pos += plateauLen.join('').match(plateauFilter).join('').length - 1;
+//             if (plateauCheck[plateauCheck.length - 1] < plateauCheck[plateauCheck.length - 2]) {
+//                 results.pos.push(pos);
+//                 results.peaks.push(val);
+//             }
+//             pos += plateauLen.join('').match(plateauFilter).join('').length - 1;
+//         } 
+//         pos++;
+//     }
+//     return results;
+// };
+
+// console.log(pickPeaks([1,2,2,2,1,4,1,2,3,2,1])); /* [1,2,3,6,4,1,2,3,2,1] {pos:[3,7], peaks:[6,3]} */
+
+// ------------------------------------------------------------------------
+
+/* Simple division
+- 
+*/
+
+function solve(a,b) {
+    let numArr = [...Array(b+1).keys()].slice(2,);
+    console.log(numArr)
+    let isPrime = [];
+    // for (let i = 2; i <= numArr.length; i++) {
+    //     let numCheck = [...Array(i).keys()].slice(2, i);
+    //     console.log(numCheck);
+    //     for (let j of numCheck) {
+    //         console.log(i % j == 0);
+
+    //     }
+    // }
+    for (let i of numArr) {
+        console.log(i);
+        let count = 2;
+        while (count <= i) {
+            console.log(count, i);
+            if (i % count !=0) {
+                break;
+            } 
+            count++;
         } 
-        pos++;
     }
-    return results;
+    console.log(isPrime)
 };
 
-console.log(pickPeaks([1,2,2,2,1,4,1,2,3,2,1])); /* [1,2,3,6,4,1,2,3,2,1] {pos:[3,7], peaks:[6,3]} */
+console.log(solve(15, 12));
+
