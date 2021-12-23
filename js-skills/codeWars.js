@@ -235,35 +235,26 @@ else return [str, 1]
 
 // ------------------------------------------------------------------------
 
-/* Simple division
-- 
-*/
+/* Simple division */
 
 function solve(a,b) {
-    let numArr = [...Array(b+1).keys()].slice(2,);
-    console.log(numArr)
     let isPrime = [];
-    // for (let i = 2; i <= numArr.length; i++) {
-    //     let numCheck = [...Array(i).keys()].slice(2, i);
-    //     console.log(numCheck);
-    //     for (let j of numCheck) {
-    //         console.log(i % j == 0);
-
-    //     }
-    // }
-    for (let i of numArr) {
-        console.log(i);
-        let count = 2;
-        while (count <= i) {
-            console.log(count, i);
-            if (i % count !=0) {
+    
+    for (let i = 2; i <= b;i++) {
+        for (let j = 2; j <= i; j++) {
+            if (i % j == 0 && i != 2) {
                 break;
-            } 
-            count++;
-        } 
-    }
-    console.log(isPrime)
+            } else {
+                if (!isPrime.includes(i)) {
+                    isPrime.push(i);
+                }
+            }
+        }            
+    } 
+    let isFactor = isPrime.filter(function(val) {return b % val == 0});
+    console.log(isFactor);
+    return isFactor.map(function(num) {return a % num == 0}).reduce(function(answer) {return answer == true});
 };
 
-console.log(solve(15, 12));
+console.log(solve(2,256));
 
