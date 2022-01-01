@@ -235,26 +235,25 @@ else return [str, 1]
 
 // ------------------------------------------------------------------------
 
-/* Simple division */
+/* Simple division - WORKING!!!*/
 
 function solve(a,b) {
-    let isPrime = [];
-    
-    for (let i = 2; i <= b;i++) {
-        for (let j = 2; j <= i; j++) {
-            if (i % j == 0 && i != 2) {
-                break;
-            } else {
-                if (!isPrime.includes(i)) {
-                    isPrime.push(i);
-                }
-            }
-        }            
-    } 
-    let isFactor = isPrime.filter(function(val) {return b % val == 0});
-    console.log(isFactor);
-    return isFactor.map(function(num) {return a % num == 0}).reduce(function(answer) {return answer == true});
+    let isPrimeFactor = [];
+    let divisor = 2;
+
+    while (b >= 2) {
+        if (b % divisor == 0) {
+            if (!isPrimeFactor.includes(divisor)) {
+                isPrimeFactor.push(divisor);
+            }; 
+            b /= divisor;
+        } else {
+            divisor++;
+        }
+    };
+
+    return !isPrimeFactor.map(function(num) {return a % num == 0}).includes(false);
 };
 
-console.log(solve(2,256));
+console.log(solve(2, 256));
 
