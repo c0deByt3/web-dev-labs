@@ -1,1 +1,3 @@
 Resume from: 39 mins
+
+Static page served through Github: https://c0debyt3.github.io/jamStack-tutorial/
