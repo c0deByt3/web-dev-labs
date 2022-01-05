@@ -21,4 +21,6 @@ JavaScript Full Stack Web Developer areas of focus:
 19. Metadata 
 20. SEO
 21. Browser storage and cookies
-
+22. JSON
+23. Eleventy
+24. Nunjucks
