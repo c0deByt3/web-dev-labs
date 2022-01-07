@@ -237,23 +237,48 @@ else return [str, 1]
 
 /* Simple division - WORKING!!!*/
 
-function solve(a,b) {
-    let isPrimeFactor = [];
-    let divisor = 2;
+// function solve(a,b) {
+//     let isPrimeFactor = [];
+//     let divisor = 2;
 
-    while (b >= 2) {
-        if (b % divisor == 0) {
-            if (!isPrimeFactor.includes(divisor)) {
-                isPrimeFactor.push(divisor);
-            }; 
-            b /= divisor;
-        } else {
-            divisor++;
+//     while (b >= 2) {
+//         if (b % divisor == 0) {
+//             if (!isPrimeFactor.includes(divisor)) {
+//                 isPrimeFactor.push(divisor);
+//             }; 
+//             b /= divisor;
+//         } else {
+//             divisor++;
+//         }
+//     };
+
+//     return !isPrimeFactor.map(function(num) {return a % num == 0}).includes(false);
+// };
+
+// console.log(solve(2, 256));
+
+// --------------------------------------------------------------------------
+
+/* Disgruntled Employee - WORKING!!!
+- create array of n length + 1 with loop starting from index 1 (with state of on)
+- while passes < n iterate over array and assign on / off depending on state
+- flip every nth switch and change state
+- return all off switches
+*/
+
+function off(n) {
+    let switches = Array(n + 1).fill('on');
+
+    for (let pass = 1; pass <= n; pass++) {
+        let switchN = pass;
+
+        while (switchN <= n) {
+            switches[switchN] == 'on' ? switches[switchN] = 'off' : switches[switchN] = 'on';
+            switchN += pass
         }
-    };
+    } 
 
-    return !isPrimeFactor.map(function(num) {return a % num == 0}).includes(false);
+    return switches.map(function(val, index) {if (val == 'off') {return index}}).filter(function(state) {return state});
 };
 
-console.log(solve(2, 256));
-
+console.log(off(9));
