@@ -266,19 +266,59 @@ else return [str, 1]
 - return all off switches
 */
 
-function off(n) {
-    let switches = Array(n + 1).fill('on');
+// function off(n) {
+//     let switches = Array(n + 1).fill('on');
 
-    for (let pass = 1; pass <= n; pass++) {
-        let switchN = pass;
+//     for (let pass = 1; pass <= n; pass++) {
+//         let switchN = pass;
 
-        while (switchN <= n) {
-            switches[switchN] == 'on' ? switches[switchN] = 'off' : switches[switchN] = 'on';
-            switchN += pass
-        }
-    } 
+//         while (switchN <= n) {
+//             switches[switchN] == 'on' ? switches[switchN] = 'off' : switches[switchN] = 'on';
+//             switchN += pass
+//         }
+//     } 
 
-    return switches.map(function(val, index) {if (val == 'off') {return index}}).filter(function(state) {return state});
+//     return switches.map(function(val, index) {if (val == 'off') {return index}}).filter(function(state) {return state});
+// };
+
+// console.log(off(9));
+
+// -------------------------------------------------------------------------------
+
+/* Change it up - WORKING!!!
+- iterate through string, change each letter to the one following in the alphabet
+- create reference alphabet with at the end to cover loop around
+- letter will become indexOf(i) + 1
+- loop through string again and if letter consonant then lower case
+- if vowel upper case
+*/
+
+function changer(str) {
+    let alpha = 'abcdefghijklmnopqrstuvwxyza';
+    let chngStr = '';
+
+    for (let i of str) {
+        let letter = i.toLowerCase();
+        alpha.includes(letter) ? chngStr += alpha[alpha.indexOf(letter) + 1] : chngStr += i;
+    }
+
+    return chngStr.replace(/[aeiou]/g, function(vow) {
+        return vow.toUpperCase();
+    })
 };
 
-console.log(off(9));
+console.log(changer("Cat30")) /* => dbU30  */
+
+// ----------------------------------------------------------------------
+
+/* Format words into a sentence
+- join array with commas and  last letter being joined with 'and'
+- ternary statement with null check returning ''
+*/
+
+function formatWords(words) {
+    return !words || words.length == 0 ? '' : words.length == 1 ? words.join() :
+            words.slice(0,3).join(', ') + ` and ${words.slice(words.length - 1)}`;
+};
+
+console.log(formatWords(['one']));  /* 'one, two, three and four' */
