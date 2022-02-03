@@ -311,14 +311,20 @@ console.log(changer("Cat30")) /* => dbU30  */
 
 // ----------------------------------------------------------------------
 
-/* Format words into a sentence
+/* Format words into a sentence - WORKING!!!
 - join array with commas and  last letter being joined with 'and'
 - ternary statement with null check returning ''
 */
 
 function formatWords(words) {
-    return !words || words.length == 0 ? '' : words.length == 1 ? words.join() :
-            words.slice(0,3).join(', ') + ` and ${words.slice(words.length - 1)}`;
+    if (!words || words.length == 0 || words == '') {
+        return '';
+    }
+
+    let cleanWord = words.join().match(/\w+/g);
+
+    return cleanWord.length == 1 ? cleanWord.join() :
+            cleanWord.slice(0,cleanWord.length - 1).join(', ') + ` and ${cleanWord.slice(cleanWord.length - 1)}`;
 };
 
-console.log(formatWords(['one']));  /* 'one, two, three and four' */
+console.log(formatWords(['', '', 'two','three']));  /* 'one, two, three and four' */
