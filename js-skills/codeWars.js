@@ -293,21 +293,21 @@ else return [str, 1]
 - if vowel upper case
 */
 
-function changer(str) {
-    let alpha = 'abcdefghijklmnopqrstuvwxyza';
-    let chngStr = '';
+// function changer(str) {
+//     let alpha = 'abcdefghijklmnopqrstuvwxyza';
+//     let chngStr = '';
 
-    for (let i of str) {
-        let letter = i.toLowerCase();
-        alpha.includes(letter) ? chngStr += alpha[alpha.indexOf(letter) + 1] : chngStr += i;
-    }
+//     for (let i of str) {
+//         let letter = i.toLowerCase();
+//         alpha.includes(letter) ? chngStr += alpha[alpha.indexOf(letter) + 1] : chngStr += i;
+//     }
 
-    return chngStr.replace(/[aeiou]/g, function(vow) {
-        return vow.toUpperCase();
-    })
-};
+//     return chngStr.replace(/[aeiou]/g, function(vow) {
+//         return vow.toUpperCase();
+//     })
+// };
 
-console.log(changer("Cat30")) /* => dbU30  */
+// console.log(changer("Cat30")) /* => dbU30  */
 
 // ----------------------------------------------------------------------
 
@@ -316,15 +316,68 @@ console.log(changer("Cat30")) /* => dbU30  */
 - ternary statement with null check returning ''
 */
 
-function formatWords(words) {
-    if (!words || words.length == 0 || words == '') {
-        return '';
-    }
+// function formatWords(words) {
+//     if (!words || words.length == 0 || words == '') {
+//         return '';
+//     }
 
-    let cleanWord = words.join().match(/\w+/g);
+//     let cleanWord = words.join().match(/\w+/g);
 
-    return cleanWord.length == 1 ? cleanWord.join() :
-            cleanWord.slice(0,cleanWord.length - 1).join(', ') + ` and ${cleanWord.slice(cleanWord.length - 1)}`;
+//     return cleanWord.length == 1 ? cleanWord.join() :
+//             cleanWord.slice(0,cleanWord.length - 1).join(', ') + ` and ${cleanWord.slice(cleanWord.length - 1)}`;
+// };
+
+// console.log(formatWords(['', '', 'two','three']));  /* 'one, two, three and four' */
+
+// -------------------------------------------------------------------------
+
+/* Compress Sentences - WORKING!!!
+- change string to lowercase and split into array
+- create string of first indexOf() each word in array
+*/
+
+// let compress = (sentence) => {
+//     let cleanStr = sentence.toLowerCase().split(' ');
+//     let unique = Array.from(new Set(sentence.toLowerCase().split(' ')));
+//     return cleanStr.map(function(a) {return unique.indexOf(a)}).join('');
+// };
+
+// console.log(compress("The number 0 is such a strange number Strangely it has zero meaning"));
+
+// ---------------------------------------------------------------------------
+
+/* Battle of the characters - WORKING!!!
+- iterate through each word if uppercase whole number, if lowercase uppercase value / 2
+- tally up score for each word passed as argument and return highest scoring word
+*/
+
+// const battle = (x, y) => {
+//     let score = '_ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//     let strength = [];
+
+//     for (let word of [x, y]) {
+//         let wordCount = 0;
+
+//         for (let letter of word) {
+//             score.includes(letter) ? wordCount += score.indexOf(letter) : wordCount += score.indexOf(letter.toUpperCase()) / 2;
+//         }       
+//         strength.push(wordCount);
+//     } 
+    
+//     return strength[0] == strength[1] ? 'Tie!' : strength[0] > strength[1] ? x : y;
+// };
+
+// console.log(battle("One", "Two"));
+
+// ----------------------------------------------------------------------------------
+
+/* Sum of Minimums! - WORKING!!!
+- find lowest number in each array passed
+- add minimum values and return sum
+*/
+
+const sumOfMinimums = (arr) => {
+    return arr.map((num) => Math.min(...num)).reduce((sum,val) => sum += val, 0);
 };
 
-console.log(formatWords(['', '', 'two','three']));  /* 'one, two, three and four' */
+console.log(sumOfMinimums([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]));
