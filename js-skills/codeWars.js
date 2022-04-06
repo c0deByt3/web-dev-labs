@@ -376,8 +376,39 @@ else return [str, 1]
 - add minimum values and return sum
 */
 
-const sumOfMinimums = (arr) => {
-    return arr.map((num) => Math.min(...num)).reduce((sum,val) => sum += val, 0);
+// const sumOfMinimums = (arr) => {
+//     return arr.map((num) => Math.min(...num)).reduce((sum,val) => sum += val, 0);
+// };
+
+// console.log(sumOfMinimums([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]));
+
+// ----------------------------------------------------------------------------------
+
+/* Filter Long Words - WORKING!!! */
+
+// const filterLongWords = (sentence, n) => sentence.split(' ').filter(a => a.length > n);
+
+// console.log(filterLongWords("The quick brown fox jumps over the lazy dog", 4));
+
+
+// -----------------------------------------------------------------------------------
+
+/* Insert dashes - WORKING!!!
+- convert num.toString()
+- iterate through string, while i < i.length -2, compare i &* i + 1
+- if both odd, add dash, else move on
+*/
+
+const insertDash = num => {
+    let numStr = num.toString();
+    let dashed = [numStr[0]];
+
+    for (let i = 0; i < numStr.length - 1; i++) {
+        let [uno, dos] = [numStr[i], numStr[i + 1]];
+        uno % 2 != 0 && dos % 2 != 0 ? dashed.push(`-${dos}`) : dashed.push(`${dos}`);
+    }
+
+    return dashed.join('');
 };
 
-console.log(sumOfMinimums([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]));
+console.log(insertDash(454793)); /* '4547-9-3' */
