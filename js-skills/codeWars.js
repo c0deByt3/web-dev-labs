@@ -399,16 +399,57 @@ else return [str, 1]
 - if both odd, add dash, else move on
 */
 
-const insertDash = num => {
-    let numStr = num.toString();
-    let dashed = [numStr[0]];
+// const insertDash = num => {
+//     let numStr = num.toString();
+//     let dashed = [numStr[0]];
 
-    for (let i = 0; i < numStr.length - 1; i++) {
-        let [uno, dos] = [numStr[i], numStr[i + 1]];
-        uno % 2 != 0 && dos % 2 != 0 ? dashed.push(`-${dos}`) : dashed.push(`${dos}`);
-    }
+//     for (let i = 0; i < numStr.length - 1; i++) {
+//         let [uno, dos] = [numStr[i], numStr[i + 1]];
+//         uno % 2 != 0 && dos % 2 != 0 ? dashed.push(`-${dos}`) : dashed.push(`${dos}`);
+//     }
 
-    return dashed.join('');
-};
+//     return dashed.join('');
+// };
 
-console.log(insertDash(454793)); /* '4547-9-3' */
+// console.log(insertDash(454793)); /* '4547-9-3' */
+
+// ---------------------------------------------------------------------------------
+
+/* Filter unused digits - WORKING!!!
+- create reference string of all digits 0-9
+- return those !s.includes(reference)
+*/
+
+// Working in local environment.
+
+// function unusedDigits() {
+//     const ref = '0123456789';
+//     let input = Object.values(...arguments).join('');
+
+//     return [...ref].filter((val) => !input.includes(val)).join('')
+// };
+
+// Working on Codewars
+
+// function unusedDigits() {
+//     const ref = '0123456789';
+//     let input = Object.values(arguments).join('');
+
+//     return [...ref].filter((val) => !input.includes(val)).join('');
+// };
+
+// console.log(unusedDigits({ '0': 12, '1': 34, '2': 56, '3': 78 }));
+
+// ---------------------------------------------------------------------------------
+
+/* Find the vowels - WORKING!!! */
+
+const vowels = 'aeiuoy';
+
+console.log([...vowels])
+
+const vowelIndices = (words) => [...words]
+                    .map((letter, index) => vowels.includes(letter.toLowerCase()) ? index + 1 : '')
+                    .filter((num) => num);
+
+console.log(vowelIndices('supercalifragilisticexpialidocious'));
